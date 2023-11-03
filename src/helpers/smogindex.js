@@ -1,14 +1,12 @@
-'use strict';
-
-var syllable = require('syllable');
+import { syllable } from 'syllable';
 
 function CalculateSmogIndex(text) {
     // Clean up the text and create a word array from it
-    var textClean = text.replace(/[^a-zA-Z ]/g, "");
-    var wordArray = textClean.split(" ");
+    const textClean = text.replace(/[^a-zA-Z ]/g, "");
+    const wordArray = textClean.split(" ");
 
     // Figure out how many polysyllabic words are in the text
-    var polysyllabicWords = [];
+    const polysyllabicWords = [];
     for(var i=0; i < wordArray.length; i++) {
         if(syllable(wordArray[i]) > 2) {
             polysyllabicWords.push(wordArray[i]);
@@ -16,14 +14,14 @@ function CalculateSmogIndex(text) {
     }
 
     // Calculate the sentence count
-    var sentenceCount = (text.replace(/\S[.?!](\s|$)/g, "$1|").split("|").length) - 1;
+    const sentenceCount = (text.replace(/\S[.?!](\s|$)/g, "$1|").split("|").length) - 1;
     
     // Calculate the Smog Index and truncate it to 2 decimal places
-    var smogIndex = Math.sqrt((polysyllabicWords.length * (30/sentenceCount)) + 3);
-    var truncatedSmogIndex = (Math.floor(smogIndex * 100) / 100);
+    const smogIndex = Math.sqrt((polysyllabicWords.length * (30/sentenceCount)) + 3);
+    const truncatedSmogIndex = (Math.floor(smogIndex * 100) / 100);
 
     // Set up the return data, making sure the smogIndex is a valid number
-    var data = {
+    const data = {
         smogIndex: (isFinite(truncatedSmogIndex) ? truncatedSmogIndex : 0),
         polysyllabicWords: polysyllabicWords,
         words: wordArray.length,
@@ -33,7 +31,4 @@ function CalculateSmogIndex(text) {
     return data;
 }
 
-/**
- * Export
- */
-module.exports = CalculateSmogIndex;
+export { CalculateSmogIndex };

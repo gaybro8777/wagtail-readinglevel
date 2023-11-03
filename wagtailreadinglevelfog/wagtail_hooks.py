@@ -8,7 +8,7 @@ from wagtail.admin.rich_text.editors.draftail.features import ControlFeature
 
 @hooks.register('register_rich_text_features')
 def register_readinglevel_feature(features):
-    feature_name = 'readinglevelsmog'
+    feature_name = 'readinglevelfog'
     features.default_features.append(feature_name)
 
     features.register_editor_plugin(
@@ -17,6 +17,6 @@ def register_readinglevel_feature(features):
         ControlFeature({
             'type': feature_name,
         },
-        js=['wagtailreadinglevel.smog.bundle.js'],
+        js=['wagtailreadinglevel.fog.bundle.js'],
         ),
     )

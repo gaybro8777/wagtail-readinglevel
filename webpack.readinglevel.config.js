@@ -1,11 +1,13 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/automated-index.js',
+  mode: 'production',
+  entry: path.resolve(__dirname, 'src/reading-level.js'),
   output: {
+    path: path.resolve(__dirname, 'wagtailreadinglevel/static'),
     filename: 'wagtailreadinglevel.bundle.js',
-    path: path.resolve(__dirname, 'wagtailreadinglevel/static')
   },
+
   module: {
     rules: [
         {
@@ -16,7 +18,6 @@ module.exports = {
                 options: {
                     presets: [
                         '@babel/preset-env',
-                        '@babel/preset-react'
                     ]
                 }
             }

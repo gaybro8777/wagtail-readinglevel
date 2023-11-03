@@ -2,26 +2,21 @@
 Registers the functions for our plugin.
 On loading, Wagtail will find this file and execute the contents.
 """
-from __future__ import unicode_literals
-
-# Django imports
-from django.conf import settings
-from django.utils.html import format_html, format_html_join
-
-# Wagtail core imports
-from wagtail.core import hooks
+from wagtail import hooks
+from wagtail.admin.rich_text.editors.draftail.features import ControlFeature
 
 
-@hooks.register('insert_editor_js')
-def editor_js():
-    """ Adds additional JavaScript files or code snippets to the page editor. """
-    # js_files = ['hallo-readinglevel-plugin.js','draftail-readinglevel-plugin.js']
-    js_files = ['wagtailadmin/js/draftail.js','api-monkeypatch.js','wagtailreadinglevel.bundle.js']
-    js_includes = format_html_join('\n', '<script src="{0}{1}"></script>',
-        ((settings.STATIC_URL, filename) for filename in js_files)
-    )
-    return js_includes + format_html(
-        """
-        <script></script>
-        """
+@hooks.register('register_rich_text_features')
+def register_readinglevel_feature(features):
+    feature_name = 'readinglevel'
+    features.default_features.append(feature_name)
+
+    features.register_editor_plugin(
+        'draftail',
+        feature_name,
+        ControlFeature({
+            'type': feature_name,
+        },
+        js=['wagtailreadinglevel.bundle.js'],
+        ),
     )

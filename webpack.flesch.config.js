@@ -1,10 +1,11 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/flesch-index.js',
+  mode: 'production',
+  entry: path.resolve(__dirname, './src/flesch-index.js'),
   output: {
+    path: path.resolve(__dirname, 'wagtailreadinglevelflesch/static'),
     filename: 'wagtailreadinglevel.flesch.bundle.js',
-    path: path.resolve(__dirname, 'wagtailreadinglevelflesch/static')
   },
   module: {
     rules: [
@@ -16,7 +17,6 @@ module.exports = {
                 options: {
                     presets: [
                         '@babel/preset-env',
-                        '@babel/preset-react'
                     ]
                 }
             }

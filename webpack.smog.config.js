@@ -1,10 +1,11 @@
 const path = require('path');
 
 module.exports = {
+  mode: 'production',
   entry: './src/smog-index.js',
   output: {
+    path: path.resolve(__dirname, 'wagtailreadinglevelsmog/static'),
     filename: 'wagtailreadinglevel.smog.bundle.js',
-    path: path.resolve(__dirname, 'wagtailreadinglevelsmog/static')
   },
   module: {
     rules: [
@@ -16,7 +17,6 @@ module.exports = {
                 options: {
                     presets: [
                         '@babel/preset-env',
-                        '@babel/preset-react'
                     ]
                 }
             }
@@ -24,3 +24,4 @@ module.exports = {
     ]
   }
 };
+

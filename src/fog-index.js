@@ -1,15 +1,15 @@
-import { CalculateColemanIndex } from './helpers/coleman';
+import { CalculateFogIndex } from './helpers/fog';
 
 /*
- * A control that displays the coleman liau index of the content inside this rich text field.
+ * A  control that displays the fog index of the content inside this rich text field.
  */
-const ColemanLiau = ({ getEditorState }) => {
+const FogIndex = ({ getEditorState }) => {
     const editorState = getEditorState();
     const content = editorState.getCurrentContent();
     const text = content.getPlainText();
-    const stats = CalculateColemanIndex(text);
+    const stats = CalculateFogIndex(text);
 
-    let message = "CL Index: N/A";
+    let message = "FOG Index: N/A";
 
     const elem = 'div';
     const classNames = 'w-inline-block w-tabular-nums w-help-text w-mr-4';
@@ -18,14 +18,14 @@ const ColemanLiau = ({ getEditorState }) => {
         return window.React.createElement(elem, { className: classNames }, `${message}`);
     }
 
-    message = `CL Index: ${stats.index}`;
+    message = `FOG Index: ${stats.index}`;
 
     return window.React.createElement(elem, {
         className: classNames,
-      }, message);
+    }, message);
 };
 
 window.draftail.registerPlugin({
-    type: 'readinglevelcoleman',
-    meta: ColemanLiau,
+    type: 'readinglevelfog',
+    meta: FogIndex,
   }, 'controls');

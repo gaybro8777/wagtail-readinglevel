@@ -1,39 +1,32 @@
 {
   "name": "wagtail-readinglevel",
-  "version": "3.4.0",
+  "version": "3.6.0",
   "description": "Wagtail plugin that adds reading level calculations to Draftail.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-automated" : "webpack",
-    "build-smog" : "webpack --config webpack.smog.config.js",
-    "build-coleman" : "webpack --config webpack.coleman.config.js",
-    "build-flesch" : "webpack --config webpack.flesch.config.js",
-    "build": "npm run build-automated && npm run build-smog && npm run build-coleman && npm run build-flesch"
+    "build-automated": "webpack --config webpack.readinglevel.config.js",
+    "build-smog": "webpack --config webpack.smog.config.js",
+    "build-coleman": "webpack --config webpack.coleman.config.js",
+    "build-flesch": "webpack --config webpack.flesch.config.js",
+    "build-fog": "webpack --config webpack.fog.config.js",
+    "build": "npm run build-automated && npm run build-smog && npm run build-coleman && npm run build-flesch && npm run build-fog"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vixdigital/wagtail-readinglevel.git"
+    "url": "git+https://github.com/torchbox-forks/wagtail-readinglevel.git"
   },
-  "author": "VIX Digital",
+  "author": "VIX Digital (original) current maintainer: Torchbox",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vixdigital/wagtail-readinglevel/issues"
+    "url": "https://github.com/torchbox-forks/wagtail-readinglevel/issues"
   },
-  "homepage": "https://github.com/vixdigital/wagtail-readinglevel#readme",
+  "homepage": "https://github.com/torchbox-forks/wagtail-readinglevel#readme",
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.41",
-    "@babel/preset-react": "^7.0.0-beta.41",
-    "@babel/preset-env": "^7.0.0-beta.41",
-    "babel-core": "^7.0.0-beta.41",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
-    "webpack": "^4.1.1",
-    "webpack-cli": "^2.0.12"
-  },
-  "dependencies": {
-    "draftail": "^0.17.0",
-    "prop-types": "^15.6.1",
-    "react": "^16.2.0",
-    "syllable": "^3.0.0"
+    "@babel/core": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "babel-loader": "^9.1.3",
+    "syllable": "^5.0.1",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   }
 }
